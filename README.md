@@ -1,6 +1,8 @@
 # IPAM Frontend
 
-Vue 3 frontend for the IPAM (IP Address Management) system.
+Vue 3 (Options API) single-page application for the IP Address Management (IPAM) system. It is the only UI users interact with: login/register, IP address list and CRUD, and (for super-admins) the audit dashboard. All API calls go through the **gateway** (`/api/*`); the frontend does not talk to auth or IP management services directly.
+
+**Purpose:** Provide a single entry point for users to manage IP addresses and view audit logs, with role-based UI (e.g. edit/delete and Audit Dashboard only for super-admins) and automatic JWT refresh.
 
 ## Prerequisites
 
