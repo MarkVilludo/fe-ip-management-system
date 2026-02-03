@@ -5,15 +5,12 @@ Vue 3 frontend for the IPAM (IP Address Management) system.
 ## Prerequisites
 
 - Node.js (v16 or higher)
-- Yarn (or npm)
 
 ## Installation
 
 Install dependencies:
 
 ```bash
-yarn install
-# or
 npm install
 ```
 
@@ -22,12 +19,11 @@ npm install
 Run the development server:
 
 ```bash
-yarn dev
-# or
 npm run dev
 ```
 
 The frontend will be available at:
+
 - **URL:** http://localhost:3000
 - **API Proxy:** All `/api/*` requests are proxied to `http://localhost:8000` (your gateway)
 
@@ -42,8 +38,6 @@ The frontend will be available at:
 Build for production:
 
 ```bash
-yarn build
-# or
 npm run build
 ```
 
@@ -54,8 +48,6 @@ The built files will be in the `dist/` directory.
 Preview the production build locally:
 
 ```bash
-yarn preview
-# or
 npm run preview
 ```
 
@@ -66,7 +58,7 @@ npm run preview
 The API base URL is configured in `src/services/api.js`:
 
 ```javascript
-const API_BASE_URL = '/api'
+const API_BASE_URL = "/api";
 ```
 
 In development, Vite proxies `/api` to `http://localhost:8000` (configured in `vite.config.js`).
@@ -78,6 +70,7 @@ For production, ensure your web server (nginx, etc.) proxies `/api` to your gate
 Currently, the frontend uses hardcoded API paths. To use environment variables:
 
 1. Create `.env` file:
+
 ```env
 VITE_API_BASE_URL=/api
 VITE_GATEWAY_URL=http://localhost:8000
@@ -91,7 +84,6 @@ VITE_GATEWAY_URL=http://localhost:8000
 
 1. **Login** as a user with `super_admin` role
 2. Navigate to **Audit Dashboard** from the navigation menu (only visible to super-admins)
-3. Or go directly to: http://localhost:3000/audit
 
 ## Troubleshooting
 
@@ -99,7 +91,6 @@ VITE_GATEWAY_URL=http://localhost:8000
 
 - Ensure your **gateway** is running on `http://localhost:8000`
 - Check browser console for CORS or network errors
-- Verify the API proxy is working: `curl http://localhost:3000/api/up`
 
 ### Session tracking not working
 
@@ -107,8 +98,7 @@ VITE_GATEWAY_URL=http://localhost:8000
 - Verify the gateway forwards `X-Session-ID` to the IP management service
 - Check that `audit_session_id` is stored in `localStorage` after login
 
-### 403 errors on audit dashboard
+### 401 errors on audit dashboard
 
 - Verify you're logged in as a user with `role: 'super_admin'`
 - Check that the backend `SuperAdminMiddleware` is working
-- Ensure JWT token includes the `role` claim
